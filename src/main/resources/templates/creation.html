@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Création</title>
+</head>
+<body>	
+		<h1>Renseignez les champs pour créer un nouvel auteur</h1>
+		<form action = "#" method="post"
+		th:action="@{/auteur/ajout}"
+		th:object="${auteur}">
+		
+		<label>Nom</label>
+		<input type="text" id="nomAu" th:field="*{nomAu}" placeholder="Nom de l'auteur" required>
+		<br>
+		<label>Prénom</label>
+		<input type="text" id="prenomAu" th:field="*{prenomAu}" placeholder="Prénom de l'auteur" required>
+		<br>
+		<label>Nationalitée</label>
+		<input type="text" id="nationaliteAu" th:field="*{nationaliteAu}" placeholder="Nationalité de l'auteur" required>
+		<br>
+		<input type="submit" value="Créer">
+		</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Mise à jour</title>
+</head>
+<body>	
+		<h1>Mise à jour</h1>
+		<form action = "#" method="post"
+		th:action="@{/auteur/update/{numAuteur}(numAuteur=${auteur.numAuteur})}"
+		th:object="${auteur}">
+		
+		<label>Nom</label>
+		<input type="text" id="nomAu" th:field="*{nomAu}" placeholder="Nom de l'auteur">
+		<br>
+		<label>Prénom</label>
+		<input type="text" id="prenomAu" th:field="*{prenomAu}" placeholder="Prénom de l'auteur">
+		<br>
+		<label>Nationalitée</label>
+		<input type="text" id="nationaliteAu" th:field="*{nationaliteAu}" placeholder="Nationalité de l'auteur">
+		<br>
+		<input type="submit" value="Maj">
+		</form>
+</body>
+</html>
