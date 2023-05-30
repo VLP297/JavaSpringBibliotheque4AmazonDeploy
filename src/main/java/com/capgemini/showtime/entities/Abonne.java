@@ -9,7 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -36,6 +38,27 @@ public class Abonne {
 	@OneToMany(mappedBy = "abonne")
 	@JsonIgnore
 	private List<Emprunt> emprunts;
+	
+	@OneToOne
+    @JoinColumn(name = "IDUtilisateur")
+    private User user;
+	
+	public Abonne(int numAbonne, String nomAbonne, String prenomAb, String adresse, Long telephoneAb,
+			List<Emprunt> emprunts, User user) {
+		super();
+		this.numAbonne = numAbonne;
+		this.nomAbonne = nomAbonne;
+		this.prenomAb = prenomAb;
+		this.adresse = adresse;
+		this.telephoneAb = telephoneAb;
+		this.emprunts = emprunts;
+		this.user = user;
+	}
+
+	public Abonne() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getNumAbonne() {
 		return numAbonne;
@@ -85,20 +108,11 @@ public class Abonne {
 		this.emprunts = emprunts;
 	}
 
-	public Abonne(int numAbonne, String nomAbonne, String prenomAb, String adresse, Long telephoneAb,
-			List<Emprunt> emprunts) {
-		super();
-		this.numAbonne = numAbonne;
-		this.nomAbonne = nomAbonne;
-		this.prenomAb = prenomAb;
-		this.adresse = adresse;
-		this.telephoneAb = telephoneAb;
-		this.emprunts = emprunts;
+	public User getUser() {
+		return user;
 	}
 
-	public Abonne() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setUser(User user) {
+		this.user = user;
 	}
-
 }

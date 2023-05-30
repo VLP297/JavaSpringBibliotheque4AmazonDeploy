@@ -1,0 +1,76 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+crossorigin="anonymous"></script>
+
+<script>
+	$(document).delegate("#btnRecherche", "click", function(event) {
+		event.preventDefault();
+		
+		var nomAuth = $("#nomAu").val();
+		var titre = $("#titre").val();
+		var isbn = $("#isbn").val();
+		
+		$.getJSON ('http://localhost:8080/api/book/' + nomAuth + '/' + titre + '/' + isbn, function(json) {
+		
+		var lignes = [];
+
+		for(var i=0; i<json.length; i++)
+		{
+		lignes.push("<tr>");
+		lignes.push("<td>"+ json[i].isbnLivre +"</td>");
+		lignes.push("<td>"+ json[i].editeur +"</td>");
+		lignes.push("<td>"+ json[i].nbrePages +"</td>");
+		lignes.push("<td>"+ json[i]. titre +"</td>");
+		lignes.push("<td><button id ='"+ json[i].isbnLivre +"' class='delete'>Supprimer</button></td>");
+		lignes.push("</tr>");
+		}
+		
+		$("#myTable").append(lignes.join(''));
+
+		})
+
+	})
+	
+	$(document).delegate(".delete", "click", function(event) {
+	
+	var id=$(this).attr("id")
+	//var trparent = $(this).parent.parent;
+	
+		$.ajax({
+		 url: "http://localhost:8080/api/book/"+id,
+		 type:"DELETE",
+		 success: function(){
+				alert("Le livre est supprimé !")
+			 },
+		 error: function(){
+			alert('Une erreur est survenue !');
+		 }
+		 })
+		 })
+</script>
+
+</head>
+
+<body>
+	<h2>Recherche des livres</h2>
+	<form method="get" action="#">
+		Nom d'auteur: <input type="text" name="nomAu" id="nomAu"><br><br>
+		Titre: <input type="text" name="titre" id="titre"><br><br>
+		ISBN: <input type="numbre" name="isbn" id="isbn"><br><br>
+		<input id="btnRecherche" type="submit" value="Recherche">
+	</form>
+	<br><br><br><br>
+	<table id="myTable" border="1">
+		<tr>
+			<th>ISBN</th>
+			<th>Editeur</th>
+			<th>N° Pages</th>
+			<th>Titre</th>
+			<th>Actions</th>
+		</tr>
+	</table>
+
+</body>
+
+</html>

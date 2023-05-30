@@ -1,15 +1,8 @@
-INSERT INTO users (IDUtilisateur, Login, Password, Type) VALUES (0, 'biblio', 'employee', 'Employee');
-INSERT INTO users (IDUtilisateur, Login, Password, Type) VALUES (nextval('user_seq'), 'ks', 'passtest', 'Abonne');
-INSERT INTO users (IDUtilisateur, Login, Password, Type) VALUES (nextval('user_seq'), 'sw', 'passtest', 'Abonne');
-INSERT INTO users (IDUtilisateur, Login, Password, Type) VALUES (nextval('user_seq'), 'fa', 'passtest', 'Abonne');
-INSERT INTO users (IDUtilisateur, Login, Password, Type) VALUES (nextval('user_seq'), 'ca', 'passtest', 'Abonne');
-INSERT INTO users (IDUtilisateur, Login, Password, Type) VALUES (nextval('user_seq'), 'mt', 'passtest', 'Abonne');
-
-INSERT INTO abonne (num_abonne, last_name, first_name, telephone, IDUtilisateur) VALUES (nextval('abonne_seq'),'KING', 'SMITH', '+33896321596',1);
-INSERT INTO abonne (num_abonne, last_name, first_name, telephone, IDUtilisateur) VALUES (nextval('abonne_seq'),'SCOTT', 'WARD', '+33896321596',2);
-INSERT INTO abonne (num_abonne, last_name, first_name, telephone, IDUtilisateur) VALUES (nextval('abonne_seq'),'FORD', 'ADAMS', '+33289921596',3);
-INSERT INTO abonne (num_abonne, last_name, first_name, telephone, IDUtilisateur) VALUES (nextval('abonne_seq'),'CLARCK', 'ADAMS', '+33696323596',4);
-INSERT INTO abonne (num_abonne, last_name, first_name, telephone, IDUtilisateur) VALUES (nextval('abonne_seq'),'MARTIN', 'FURMER', '+335578323596',5);
+INSERT INTO abonne (num_abonne, last_name, first_name, telephone) VALUES (nextval('abonne_seq'),'KING', 'SMITH', '+33896321596');
+INSERT INTO abonne (num_abonne, last_name, first_name, telephone) VALUES (nextval('abonne_seq'),'SCOTT', 'WARD', '+33896321596');
+INSERT INTO abonne (num_abonne, last_name, first_name, telephone) VALUES (nextval('abonne_seq'),'FORD', 'ADAMS', '+33289921596');
+INSERT INTO abonne (num_abonne, last_name, first_name, telephone) VALUES (nextval('abonne_seq'),'CLARCK', 'ADAMS', '+33696323596');
+INSERT INTO abonne (num_abonne, last_name, first_name, telephone) VALUES (nextval('abonne_seq'),'MARTIN', 'FURMER', '+335578323596');
 
 
 insert into auteur (num_auteur, nationalite_auteur, nom_auteur, prenom_auteur)

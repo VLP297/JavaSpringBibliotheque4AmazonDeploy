@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.capgemini.showtime.entities.Auteur;
-import com.capgemini.showtime.entities.Livre;
 
 public interface AuteurRepository extends JpaRepository<Auteur, Integer>{
 

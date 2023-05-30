@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AbonneController {
 
 	// READ
-	@GetMapping("/index")
+	@GetMapping("/abonne")
 	public String showMenu() {
 		
-		return "index";
+		return "abonne";
 	}
 
 }
