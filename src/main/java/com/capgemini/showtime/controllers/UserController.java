@@ -32,7 +32,7 @@ public class UserController {
 
         if (authenticatedUser != null) {
         	// Authentification réussie
-            if (authenticatedUser.getUserType() == "Abonne") {
+            if (authenticatedUser.getUserType().equalsIgnoreCase("Abonne")){
             return "redirect:/abonne";
             } else {
             	return "redirect:/employe";
