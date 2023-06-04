@@ -18,6 +18,6 @@ public interface LivreRepository extends JpaRepository<Livre, Integer>{
 	List<Livre> findByIsbnLivre(int isbnLivre);
 	
 	@Query(value = "SELECT l.* FROM livre l JOIN auteur a ON l.num_auteur = a.num_auteur"
-				 + " WHERE a.nom_auteur = :nomAu OR l.titre LIKE %:titre% OR l.isbn_livre = :isbn", nativeQuery = true)
+				 + " WHERE a.nom_auteur LIKE '%:nomAu%' OR l.titre LIKE '%:titre%' OR l.isbn_livre =:isbn", nativeQuery = true)
 	List<Livre> findByCriteria(@Param("nomAu")String nomAu, @Param("titre")String titre, @Param("isbn")int isbn);
 }

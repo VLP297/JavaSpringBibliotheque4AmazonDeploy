@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des emprunts</title>
+</head>
+<body>
+    <h1>Mes emprunts</h1>
+    <br>
+	<div th:if="${emprunts.size()}>0">
+    	<table border="1">
+	    	<thead>
+	        <tr>
+	            <th>ISBN du livre</th>
+	            <th>Titre</th>
+	            <th>Date d'emprunt</th>
+	            <th>Date de retour prévue</th>
+	            <th>Date de retour effective</th>
+	            <th>Violation règle</th>
+	        </tr>
+	        </thead>
+			<tbody>
+		        <tr th:each="emprunt : ${emprunts}">
+		        	<td th:text="${emprunt.livre.getIsbnLivre()}"></td>
+		            <td th:text="${emprunt.livre.getTitre()}"></td>
+		            <td th:text="${emprunt.getDateEmprunt()}"></td>
+		            <td th:text="${emprunt.getDateRetourPrevue()}"></td>
+		            <td th:text="${emprunt.getDateRetourEffective()}"></td>
+		            <td th:text="${emprunt.isEnRetard()}"></td>
+		        </tr>
+	        </tbody>
+    	</table>
+		<br>
+		<form>
+			<a th:href="@{/abonne}" class="button-74" >Accueil</a>
+		</form>
+	</div>
+	<div th:unless="${emprunts.size()}>0">
+		<p>Aucun auteur trouvé !</p>
+	</div>
+</body>
+</html>
+
+<style>
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 5px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}	
+</style>

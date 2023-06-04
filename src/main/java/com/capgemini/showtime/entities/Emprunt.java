@@ -26,10 +26,7 @@ public class Emprunt {
 	@Temporal(TemporalType.DATE)
 	private Date dateRetourEffective;
 
-	@Transient
-	Boolean retard;
-
-	public Boolean isEnRetard() {
+	public String isEnRetard() {
 
 		String violation = "Pas de violation";
 		Date today = new Date(); 
@@ -44,9 +41,7 @@ public class Emprunt {
 			violation = (dateRetourEffective.after(dateRetourPrevue)) ? "Rendu avec retard" : "Pas de violation"; 
 		} 
 		
-		retard = (violation == "Doit être retourné" || violation == "Rendu avec retard") ? true : false;
-		
-		return retard; 
+		return violation;
 	}
 
 	@Id

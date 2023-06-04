@@ -1,26 +1,36 @@
 package com.capgemini.showtime.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import com.capgemini.showtime.entities.Emprunt;
+import com.capgemini.showtime.entities.User;
 import com.capgemini.showtime.repositories.EmpruntRepository;
 
-@RestController
-@RequestMapping("api/loan")
-public class EmpruntController {
+import jakarta.servlet.http.HttpSession;
 
+@Controller
+public class EmpruntController {
+    
 	@Autowired
 	private EmpruntRepository empruntRepository;
+    
+    // READ FOR ABONNE
+ 	@GetMapping("/mesemprunts")
+ 	public String showMesEmprunts(Model model, HttpSession session) {
+ 		Long id = (Long) session.getAttribute("userId");
+ 		model.addAttribute("emprunts", empruntRepository.findEmpruntById(id));
+ 		return "emprunts";
+ 	}
 
-	// Retourne la liste de tous les emprunts pour l'abonné
-	@GetMapping("/all")
-	public List<Emprunt> displayAll() {
-		List<Emprunt> le = empruntRepository.findAll();
-		return le;
-	}
+ 	// READ FOR EMPLOYEE
+    @GetMapping("/emprunts")
+    public List<Emprunt> getAllEmprunts() {
+        return empruntRepository.findAll();
+    }
 }

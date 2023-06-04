@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.capgemini.showtime.entities.User;
-import com.capgemini.showtime.repositories.EmpruntRepository;
 import com.capgemini.showtime.repositories.UserRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -16,14 +17,14 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 
-    @GetMapping("/login")
+	@GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("user", new User());
         return "login";
     }
 
     @PostMapping("/login")
-    public String processLogin(User user) {
+    public String processLogin(User user, HttpSession session) {
         String login = user.getLogin();
         String password = user.getPassword();
 
@@ -31,9 +32,12 @@ public class UserController {
         User authenticatedUser = userRepository.findByLoginAndPassword(login, password);
 
         if (authenticatedUser != null) {
+        	        	 
         	// Authentification réussie
             if (authenticatedUser.getUserType().equalsIgnoreCase("Abonne")){
-            return "redirect:/abonne";
+            	session.setAttribute("userId", authenticatedUser.getId());            	
+            	
+            	return "redirect:/abonne";
             } else {
             	return "redirect:/employe";
             }

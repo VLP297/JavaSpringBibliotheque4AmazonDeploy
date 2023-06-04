@@ -47,7 +47,7 @@ insert into livre(isbn_livre, editeur, nbre_pages, titre, num_auteur)
 values(6, 'BOOK EDITION', 115, 'Python', 3);
 
 insert into livre(isbn_livre, editeur, nbre_pages, titre, num_auteur)
-values(7, 'IA vulgarisée', 320, 'EYROLLES', 4);
+values(7, 'EYROLLES', 320, 'IA vulgarisée', 4);
 
 insert into livre(isbn_livre, editeur, nbre_pages, titre, num_auteur)
 values(8, 'BOOK EDITION', 325, 'SQL server en pratique', 3);
