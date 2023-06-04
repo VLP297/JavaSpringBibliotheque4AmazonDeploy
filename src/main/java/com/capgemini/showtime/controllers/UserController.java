@@ -1,14 +1,19 @@
 package com.capgemini.showtime.controllers;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.capgemini.showtime.entities.User;
 import com.capgemini.showtime.repositories.UserRepository;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -16,6 +21,11 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public void redirectToLanding(HttpServletResponse httpServletResponse) throws IOException {
+	    httpServletResponse.sendRedirect("login");
+	}
 
 	@GetMapping("/login")
     public String showLoginForm(Model model) {

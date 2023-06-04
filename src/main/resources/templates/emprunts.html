@@ -31,7 +31,7 @@
     	</table>
 		<br>
 		<form>
-			<a th:href="@{/abonne}" class="button-74" >Accueil</a>
+			<a th:href="@{/abonne}" class="button-74" >Retour</a>
 		</form>
 	</div>
 	<div th:unless="${emprunts.size()}>0">
@@ -42,6 +42,11 @@
 
 <style>
 /* CSS */
+body {
+	background-image: url("https://media.istockphoto.com/id/514536119/fr/photo/pile-de-livres-isol%C3%A9-sur-fond-blanc.jpg?s=612x612&w=0&k=20&c=VfTux0i8b5q9_LX1L9Dds5ZUW1Ec11SCHmCxtW7IuAU=");
+	background-repeat: no-repeat;
+	background-position: 75% 1%;
+}
 .button-74 {
   background-color: #fbeee0;
   border: 2px solid #422800;

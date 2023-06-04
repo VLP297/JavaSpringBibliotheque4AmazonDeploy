@@ -5,8 +5,9 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+	<br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1>Bienvenue dans votre bibliothèque</h1>
+    <form  action="#" th:action="@{/login}" th:object="${user}" method="post">
         <label for="login">Login:</label>
         <input type="text" id="login" th:field="*{login}">
 
@@ -17,3 +18,14 @@
     </form>
 </body>
 </html>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+h1 { font-family: 'MedievalSharp', cursive; }
+body {
+    background-image: url("https://www.chalon.fr/fileadmin/_processed_/7/b/csm_BIBLIOTHEQUE_ADULTES_22_1c0ffa7fae.jpg");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	text-align: center;
+	color : white;
+}
+</style>
