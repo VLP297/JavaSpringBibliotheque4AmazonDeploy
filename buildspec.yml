@@ -1,11 +1,11 @@
 version: 0.2
-  phases:
-    install:
-      runtime-versions:
-        java: corretto17
-    build:
-      commands:
-        - mvn install
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - mvn install
 artifacts:
   files:
     - target/javawebdemo.war
